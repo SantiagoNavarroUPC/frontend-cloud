@@ -1,3 +1,14 @@
+:root {
+  --color-primary: #188353;
+  --color-secondary: #1c1c1c; 
+  --color-accent: #7ed7a7; 
+  --color-light: #eefbf3; 
+  --color-dark: #333333; 
+  --color-hover: #10442f; 
+  --color-grid: #f0eff0;
+  --color-border: #000;
+}
+
 .App {
   text-align: center;
 }
@@ -36,3 +47,4 @@
     transform: rotate(360deg);
   }
 }
+
