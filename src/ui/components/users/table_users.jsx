@@ -57,7 +57,7 @@ const UsersTable = () => {
 
   const deleteUser = async (id) => {
     try {
-      await UserService.deleteUser(id);
+      await UserService.removeUser(id);
       setUsers((prev) => prev.filter((u) => u.id !== id));
     } catch (error) {
       alert(`Error al eliminar el usuario: ${error.message || 'Error inesperado'}`);

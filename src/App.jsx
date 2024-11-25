@@ -11,8 +11,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/menu" element={<Menu />} />
+        <Route path="/" element={<Menu />} />
         <Route path="/products" element={<Products />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/users" element={<Users />} />

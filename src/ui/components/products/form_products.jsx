@@ -13,19 +13,32 @@ const ProductForm = ({
   const handleFormSubmit = async (e) => {
     e.preventDefault(); // Prevenir comportamiento por defecto del formulario
     try {
+      // Datos que se enviarán al backend
+      const productData = {
+        name: formData.name,
+        description: formData.description,
+        price: parseFloat(formData.price), // Convertir el precio a número
+        category_id: parseInt(formData.category), // Convertir la categoría a número
+        state: formData.state,
+      };
+  
+      console.log('Datos enviados al backend:', productData); // Imprime los datos
+  
       if (editingProduct) {
-        await ProductService.updateExistingProduct(editingProduct.id, formData);
+        await ProductService.updateExistingProduct(editingProduct.id, productData);
+        alert('Producto actualizado correctamente');
       } else {
-        alert(`Producto agregado correctamente`);
-        await ProductService.createNewProduct(formData);
-        console.log(formData);
+        await ProductService.createNewProduct(productData);
+        alert('Producto creado correctamente');
       }
+  
       resetForm(); // Reiniciar formulario
-      handleSubmit(); // Notificar al componente padre
+      handleSubmit(); // Notificar al componente padre para actualizar la tabla
     } catch (error) {
       alert(`Error al procesar el formulario: ${error.message || 'Ocurrió un error inesperado'}`);
     }
   };
+  
 
   return (
     <form onSubmit={handleFormSubmit} className="form-products">
@@ -56,7 +69,7 @@ const ProductForm = ({
       />
       <select
         name="category"
-        value={formData.category}
+        value={formData.category} // Aquí se usará el ID de la categoría
         onChange={handleInputChange}
         required
       >
@@ -66,7 +79,6 @@ const ProductForm = ({
             {cat.name}
           </option>
         ))}
-
       </select>
       <select
         name="state"

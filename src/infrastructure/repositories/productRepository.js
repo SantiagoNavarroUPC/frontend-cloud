@@ -4,10 +4,11 @@ import axiosInstance from "../api/axiosConfig";
 export default class ProductRepository extends ProductPort {
   static async getAllProducts() {
     const response = await axiosInstance.get("/products");
-    return response.data;
+    return response.data.body;
   }
 
   static async createProduct(productData) {
+    console.log('Enviando datos al backend para creación:', productData); // Imprimir datos
     const response = await axiosInstance.post("/products", productData);
     return response.data;
   }

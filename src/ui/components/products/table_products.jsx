@@ -23,8 +23,15 @@ const ProductsTable = () => {
         setIsLoading(true);
         const productsData = await ProductService.fetchAllProducts();
         const categoriesData = await CategoryService.fetchAllCategories();
-        setProducts(productsData);
-        setCategories(Array.isArray(categoriesData) ? categoriesData : []);
+
+        // Asignar el nombre de la categoría a los productos
+        const productsWithCategoryName = productsData.map((product) => {
+          const category = categoriesData.find((cat) => cat.id === product.category_id);
+          return { ...product, categoryName: category ? category.name : 'Sin categoría' };
+        });
+
+        setProducts(productsWithCategoryName);
+        setCategories(categoriesData);
       } catch (error) {
         alert(`Error al cargar los datos: ${error.message || 'Error inesperado'}`);
       } finally {
@@ -41,13 +48,24 @@ const ProductsTable = () => {
   };
 
   const handleSubmit = async () => {
-    const updatedProducts = await ProductService.fetchAllProducts();
-    setProducts(updatedProducts);
+    const productsData = await ProductService.fetchAllProducts();
+    const productsWithCategoryName = productsData.map((product) => {
+      const category = categories.find((cat) => cat.id === product.category_id);
+      return { ...product, categoryName: category ? category.name : 'Sin categoría' };
+    });
+    setProducts(productsWithCategoryName);
   };
 
   const startEditing = (product) => {
     setEditingProduct(product);
-    setFormData(product);
+    // Configura el ID de la categoría en el formulario
+    setFormData({
+      name: product.name,
+      description: product.description,
+      price: product.price,
+      category: product.category_id, // Usar el ID de la categoría
+      state: product.state,
+    });
   };
 
   const resetForm = () => {
@@ -104,8 +122,8 @@ const ProductsTable = () => {
               <tr key={product.id}>
                 <td>{product.name}</td>
                 <td>{product.description}</td>
-                <td>${product.price.toFixed(2)}</td>
-                <td>{product.category}</td>
+                <td>${product.price}</td>
+                <td>{product.categoryName}</td>
                 <td>
                   <span className={product.state === 'activo' ? 'icon-green' : 'icon-red'}>
                     {product.state === 'activo' ? 'Activo' : 'Inactivo'}

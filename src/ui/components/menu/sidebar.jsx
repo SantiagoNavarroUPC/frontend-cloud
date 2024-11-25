@@ -14,7 +14,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
   const navigate = useNavigate();
 
   const handleDashboard = () => {
-    navigate('/menu'); // Ruta para el panel principal
+    navigate('/'); // Ruta para el panel principal
   };
 
   const handleProducts = () => {

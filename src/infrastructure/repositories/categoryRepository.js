@@ -4,7 +4,7 @@ import CategoryPort from "../../application/ports/categoryPort";
 export default class CategoryRepository extends CategoryPort {
   static async getAllCategories() {
     const response = await axiosInstance.get("/categories");
-    return response.data;
+    return response.data.body;
   }
 
   static async createCategory(categoryData) {

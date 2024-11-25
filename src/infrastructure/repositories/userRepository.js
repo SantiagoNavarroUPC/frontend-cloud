@@ -4,7 +4,7 @@ import UserPort from "../../application/ports/userPort";
 export default class UserRepository extends UserPort {
   static async getAllUsers() {
     const response = await axiosInstance.get("/users");
-    return response.data;
+    return response.data.body;
   }
 
   static async createUser(userData) {

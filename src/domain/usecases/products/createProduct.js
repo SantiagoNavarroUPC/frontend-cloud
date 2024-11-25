@@ -10,7 +10,7 @@ export default class CreateProduct {
       productData.price,
       productData.categoryId,
       productData.state || "activo"
-    );
+    );// Imprimir datos
     return await ProductRepository.createProduct(product);
   }
 }
