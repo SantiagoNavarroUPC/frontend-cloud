@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: . # El Dockerfile está en el mismo directorio que docker-compose.yml
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80" # Mapea el puerto 80 del contenedor al puerto 3000 de la máquina host
+    environment:
+      # Opcional: variables que tu frontend pueda necesitar
+      REACT_APP_BACKEND_URL: "http://18.191.62.118:4000" # URL de tu backend desplegado
+    networks:
+      - frontend_network
+
+networks:
+  frontend_network:
