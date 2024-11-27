@@ -5,7 +5,6 @@ import Menu from './ui/pages/menu/menu';
 import Products from './ui/pages/products/products';
 import Categories from './ui/pages/categories/categories';
 import Users from './ui/pages/users/users';
-import Login from './ui/pages/login/login';
 
 function App() {
   return (

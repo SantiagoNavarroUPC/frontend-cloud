@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaPlus, FaSave } from 'react-icons/fa';
 import CategoryService from '../../../application/services/categoryService'; // Importa el servicio
+import '../../pages/categories/categories.css';
 
 const CategoryForm = ({ formData, editingCategory, handleInputChange, handleSubmit, resetForm }) => {
   const handleFormSubmit = async (e) => {

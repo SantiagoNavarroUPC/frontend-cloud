@@ -3,6 +3,7 @@ import { FaSearch, FaEdit, FaTrash } from 'react-icons/fa';
 import ProductForm from './form_products';
 import ProductService from '../../../application/services/productService'
 import CategoryService from '../../../application/services/categoryService';
+import '../../pages/products/products.css';
 
 const ProductsTable = () => {
   const [products, setProducts] = useState([]);

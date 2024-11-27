@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaSearch, FaEdit, FaTrash } from 'react-icons/fa';
 import CategoryForm from './form_categories';
 import CategoryService from '../../../application/services/categoryService'; // Asegúrate de importar correctamente el servicio
+import '../../pages/categories/categories.css';
 
 const CategoriesTable = () => {
   const [categories, setCategories] = useState([]);

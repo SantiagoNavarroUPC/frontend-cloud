@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaPlus, FaSave } from 'react-icons/fa';
 import ProductService from '../../../application/services/productService'; // Importa el servicio
+import '../../pages/products/products.css';
 
 const ProductForm = ({
   formData,
@@ -56,7 +57,6 @@ const ProductForm = ({
         value={formData.description}
         onChange={handleInputChange}
         placeholder="Descripción"
-        required
       />
       <input
         type="number"
