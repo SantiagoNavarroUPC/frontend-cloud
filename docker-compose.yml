@@ -9,7 +9,7 @@ services:
       - "3000:80" # Mapea el puerto 80 del contenedor al puerto 3000 de la máquina host
     environment:
       # Opcional: variables que tu frontend pueda necesitar
-      REACT_APP_BACKEND_URL: "http://18.191.62.118:4000" # URL de tu backend desplegado
+      REACT_APP_BACKEND_URL: "http://18.223.196.40:4000/" # URL de tu backend desplegado
     networks:
       - frontend_network
 
